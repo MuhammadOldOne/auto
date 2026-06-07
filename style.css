@@ -321,6 +321,83 @@ ul, ol {
   flex-shrink: 0;
 }
 
+/* ===== NEW HERO (veli-blocks) ===== */
+.veli-hero {
+  background: radial-gradient(circle at 80% 20%, #1b2a3e 0%, var(--clr-bg) 55%);
+  padding: 120px 20px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.veli-hero::before {
+  content: ""; position: absolute; inset: 0;
+  background-image: radial-gradient(rgba(255,107,0,.05) 1px, transparent 1px);
+  background-size: 22px 22px; pointer-events: none;
+}
+.veli-hero-wrap {
+  max-width: var(--max-w); margin: 0 auto;
+  display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center;
+  position: relative; z-index: 1;
+}
+.veli-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,107,0,.12); color: var(--clr-accent);
+  border: 1px solid rgba(255,107,0,.3);
+  padding: 7px 14px; border-radius: 100px; font-size: 14px; font-weight: 700;
+  margin-bottom: 22px;
+}
+.veli-hero h1 {
+  font-size: clamp(28px, 5vw, 52px); color: var(--clr-white);
+  margin-bottom: 18px; line-height: 1.12; font-weight: 800; letter-spacing: -0.02em;
+}
+.veli-hero h1 .hl { color: var(--clr-accent); }
+.veli-hero .sub {
+  font-size: 17px; color: var(--clr-text-muted); line-height: 1.6;
+  margin-bottom: 26px; max-width: 520px;
+}
+.veli-trust { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 28px; }
+.veli-trust div { display: flex; flex-direction: column; }
+.veli-trust b { font-size: 24px; font-weight: 800; color: var(--clr-white); }
+.veli-trust span { font-size: 13px; color: var(--clr-text-muted); margin-top: 2px; }
+
+.veli-form-card {
+  background: var(--clr-bg-card); border: 1px solid var(--clr-border);
+  border-radius: var(--radius); padding: 30px;
+  box-shadow: 0 24px 60px rgba(0,0,0,.4);
+}
+.veli-form-card h3 { font-size: 20px; font-weight: 700; color: var(--clr-white); margin-bottom: 6px; }
+.veli-form-card > p { color: var(--clr-text-muted); font-size: 14px; margin: 0 0 20px; }
+.veli-input {
+  width: 100%; background: var(--clr-bg); border: 1px solid var(--clr-border);
+  color: var(--clr-white); padding: 14px 16px; border-radius: var(--radius-sm);
+  font-size: 15px; font-family: inherit; margin-bottom: 12px;
+  outline: none; transition: border-color .2s, box-shadow .2s;
+}
+.veli-input:focus { border-color: var(--clr-accent); box-shadow: 0 0 0 3px rgba(255,107,0,.15); }
+.veli-input.error { border-color: #ff4444; box-shadow: 0 0 0 3px rgba(255,68,68,.15); }
+.veli-input::placeholder { color: var(--clr-text-muted); }
+.veli-btn {
+  width: 100%; background: var(--clr-accent); color: var(--clr-white); border: none;
+  padding: 16px; border-radius: var(--radius-sm); font-size: 16px; font-weight: 700;
+  cursor: pointer; font-family: inherit;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+.veli-btn:hover { background: var(--clr-accent-hover); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(255,107,0,.35); }
+.veli-btn-tg {
+  width: 100%; background: transparent; color: var(--clr-text); border: 1px solid var(--clr-border);
+  padding: 14px; border-radius: var(--radius-sm); font-size: 15px; font-weight: 600; cursor: pointer;
+  margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 8px;
+  text-decoration: none; transition: border-color var(--transition), color var(--transition);
+}
+.veli-btn-tg:hover { border-color: var(--clr-tg); color: var(--clr-tg); }
+.veli-note { font-size: 12px; color: var(--clr-text-muted); text-align: center; margin-top: 12px; }
+.veli-note a { color: var(--clr-text-muted); text-decoration: underline; transition: color var(--transition); }
+.veli-note a:hover { color: var(--clr-white); }
+
+@media (max-width: 860px) {
+  .veli-hero { padding: 110px 20px 60px; }
+  .veli-hero-wrap { grid-template-columns: 1fr; gap: 32px; }
+}
+
 /* ===== ADVANTAGES ===== */
 .advantages {
   padding: 96px 0;
@@ -369,6 +446,36 @@ ul, ol {
   font-size: 0.9rem;
   color: var(--clr-text-muted);
   line-height: 1.5;
+}
+
+/* ===== COMPARE BLOCK (veli-blocks) ===== */
+.veli-compare { background: var(--clr-bg-light); padding: 80px 20px; }
+.veli-compare-wrap { max-width: var(--max-w); margin: 0 auto; }
+.veli-sec-head { text-align: center; margin-bottom: 14px; }
+.veli-sec-head h2 { font-size: clamp(24px, 4vw, 36px); font-weight: 800; color: var(--clr-white); }
+.veli-sec-sub { text-align: center; color: var(--clr-text-muted); font-size: 16px; max-width: 640px; margin: 0 auto 44px; line-height: 1.55; }
+.veli-cmp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.veli-cmp-card {
+  background: var(--clr-bg-card); border: 1px solid var(--clr-border);
+  border-radius: var(--radius); padding: 28px 24px; position: relative; overflow: hidden;
+}
+.veli-cmp-card.win { border-color: rgba(46,194,126,.4); background: linear-gradient(180deg, rgba(46,194,126,.05), var(--clr-bg-card)); }
+.veli-cmp-card .label { font-size: 13px; color: var(--clr-text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 14px; }
+.veli-cmp-card .car { font-size: 18px; font-weight: 800; color: var(--clr-white); margin-bottom: 4px; }
+.veli-cmp-card .car-desc { font-size: 13px; color: var(--clr-text-muted); margin-bottom: 20px; }
+.veli-cmp-card .price { font-size: 30px; font-weight: 800; }
+.veli-cmp-card.ru .price { color: #ff6b6b; }
+.veli-cmp-card.win .price { color: #2ec27e; }
+.veli-cmp-card .price-note { font-size: 13px; color: var(--clr-text-muted); margin-top: 6px; }
+.veli-save-chip {
+  position: absolute; top: 18px; right: 18px;
+  background: #2ec27e; color: #04200f; font-size: 12px; font-weight: 800;
+  padding: 5px 10px; border-radius: 100px;
+}
+.veli-cmp-foot { text-align: center; color: var(--clr-text-muted); font-size: 13px; margin-top: 22px; }
+
+@media (max-width: 860px) {
+  .veli-cmp-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
 }
 
 /* ===== STEPS ===== */
@@ -592,6 +699,54 @@ ul, ol {
   color: var(--clr-accent);
   font-size: 1.1rem;
   font-weight: 700;
+}
+
+/* ===== CALCULATOR (veli-blocks) ===== */
+.veli-calc { background: linear-gradient(180deg, var(--clr-bg-card) 0%, var(--clr-bg) 100%); padding: 80px 20px; }
+.veli-calc-wrap {
+  max-width: 760px; margin: 0 auto; background: var(--clr-bg-card);
+  border: 1px solid var(--clr-border); border-radius: 20px; padding: 40px 36px;
+  box-shadow: 0 30px 70px rgba(0,0,0,.35);
+}
+.veli-calc-wrap h2 { font-size: clamp(22px, 4vw, 30px); font-weight: 800; color: var(--clr-white); text-align: center; margin-bottom: 8px; }
+.veli-calc-wrap .calc-sub { text-align: center; color: var(--clr-text-muted); margin-bottom: 32px; font-size: 15px; }
+.veli-field { margin-bottom: 24px; }
+.veli-field > label { display: block; font-size: 14px; font-weight: 700; color: var(--clr-text-muted); margin-bottom: 12px; }
+.veli-seg { display: flex; gap: 10px; }
+.veli-seg button {
+  flex: 1; background: var(--clr-bg); border: 1px solid var(--clr-border); color: var(--clr-text);
+  padding: 14px; border-radius: var(--radius-sm); font-size: 15px; font-weight: 600;
+  cursor: pointer; font-family: inherit; transition: all var(--transition);
+}
+.veli-seg button.active { background: var(--clr-accent); color: var(--clr-white); border-color: var(--clr-accent); }
+.veli-seg button:not(.active):hover { border-color: var(--clr-accent); color: var(--clr-accent); }
+.veli-range-val { font-size: 26px; font-weight: 800; color: var(--clr-accent); margin-bottom: 8px; }
+.veli-range {
+  width: 100%; -webkit-appearance: none; height: 6px; border-radius: 6px;
+  background: var(--clr-bg); outline: none; cursor: pointer;
+}
+.veli-range::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 24px; height: 24px; border-radius: 50%;
+  background: var(--clr-accent); cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,.4);
+}
+.veli-range::-moz-range-thumb {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--clr-accent); cursor: pointer; border: none;
+}
+.veli-range-labels { display: flex; justify-content: space-between; font-size: 12px; color: var(--clr-text-muted); margin-top: 6px; }
+.veli-result {
+  background: linear-gradient(135deg, rgba(46,194,126,.08), rgba(255,107,0,.05));
+  border: 1px solid rgba(46,194,126,.3); border-radius: var(--radius);
+  padding: 26px; text-align: center; margin: 28px 0 22px;
+}
+.veli-result .r-label { font-size: 14px; color: var(--clr-text-muted); margin-bottom: 6px; }
+.veli-result .r-price { font-size: 40px; font-weight: 800; color: #2ec27e; line-height: 1; }
+.veli-result .r-save { font-size: 15px; color: var(--clr-text); margin-top: 12px; }
+.veli-result .r-save b { color: var(--clr-accent); }
+
+@media (max-width: 768px) {
+  .veli-calc-wrap { padding: 28px 20px; }
+  .veli-seg { flex-direction: column; }
 }
 
 /* ===== FAQ ===== */

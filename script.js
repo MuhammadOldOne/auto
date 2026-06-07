@@ -2,8 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initBurger();
   initSmoothScroll();
   initFAQ();
-  initPhoneMask();
-  initForm();
+  initPhoneMasks();
+  initForms();
+  initCalculator();
   initGalleries();
   initReveal();
 });
@@ -69,19 +70,11 @@ function initFAQ() {
 }
 
 /* ===== PHONE MASK ===== */
-function initPhoneMask() {
-  const input = document.getElementById('phone');
-  if (!input) return;
-
+function applyPhoneMask(input) {
   input.addEventListener('input', (e) => {
     let val = e.target.value.replace(/\D/g, '');
-
-    if (val.length > 0 && val[0] === '8') {
-      val = '7' + val.slice(1);
-    }
-    if (val.length > 0 && val[0] !== '7') {
-      val = '7' + val;
-    }
+    if (val.length > 0 && val[0] === '8') val = '7' + val.slice(1);
+    if (val.length > 0 && val[0] !== '7') val = '7' + val;
 
     let formatted = '';
     if (val.length > 0) formatted = '+7';
@@ -90,7 +83,6 @@ function initPhoneMask() {
     if (val.length > 4) formatted += val.substring(4, 7);
     if (val.length > 7) formatted += '-' + val.substring(7, 9);
     if (val.length > 9) formatted += '-' + val.substring(9, 11);
-
     e.target.value = formatted;
   });
 
@@ -101,65 +93,78 @@ function initPhoneMask() {
     }
   });
 
-  input.addEventListener('focus', () => {
-    if (!input.value) {
-      input.value = '+7';
-    }
-  });
-
-  input.addEventListener('blur', () => {
-    if (input.value === '+7') {
-      input.value = '';
-    }
-  });
+  input.addEventListener('focus', () => { if (!input.value) input.value = '+7'; });
+  input.addEventListener('blur', () => { if (input.value === '+7') input.value = ''; });
 }
 
-/* ===== FORM SUBMIT ===== */
-function initForm() {
-  const form = document.getElementById('leadForm');
-  if (!form) return;
+function initPhoneMasks() {
+  document.querySelectorAll('input[type="tel"]').forEach(applyPhoneMask);
+}
 
+/* ===== LEAD DELIVERY via Vercel API route ===== */
+function sendLead(data) {
+  return fetch('/api/lead', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  }).then(r => {
+    if (!r.ok) console.error('Lead API error', r.status);
+    if (typeof ym === 'function') ym(window.YM_ID, 'reachGoal', 'form_submit');
+  }).catch(err => console.error('Ошибка отправки заявки:', err));
+}
+
+function showSuccess(container) {
+  container.innerHTML = `
+    <div style="text-align:center; padding: 40px 0;">
+      <svg width="64" height="64" viewBox="0 0 64 64" fill="none" style="margin-bottom:16px;">
+        <circle cx="32" cy="32" r="32" fill="rgba(255,107,0,0.15)"/>
+        <path d="M20 32l8 8 16-16" stroke="#ff6b00" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h3 style="color:#fff; font-size:1.5rem; margin-bottom:8px;">Заявка отправлена!</h3>
+      <p style="color:#8a9bb0;">Мы свяжемся с вами в ближайшее время</p>
+    </div>
+  `;
+}
+
+function bindLeadForm(form) {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const name = form.querySelector('[name="name"]');
-    const phone = form.querySelector('[name="phone"]');
+    const nameInput = form.querySelector('[name="name"]');
+    const phoneInput = form.querySelector('[name="phone"]');
     let valid = true;
 
-    name.classList.remove('error');
-    phone.classList.remove('error');
+    [nameInput, phoneInput].forEach(el => el && el.classList.remove('error'));
 
-    if (!name.value.trim()) {
-      name.classList.add('error');
+    if (nameInput && !nameInput.value.trim()) {
+      nameInput.classList.add('error');
       valid = false;
     }
-
-    const digits = phone.value.replace(/\D/g, '');
+    const digits = phoneInput ? phoneInput.value.replace(/\D/g, '') : '';
     if (digits.length < 11) {
-      phone.classList.add('error');
+      phoneInput && phoneInput.classList.add('error');
       valid = false;
     }
-
     if (!valid) return;
 
+    const carInput = form.querySelector('[name="car"]');
     const data = {
-      name: name.value.trim(),
-      phone: phone.value,
-      car: form.querySelector('[name="car"]').value.trim()
+      name: nameInput ? nameInput.value.trim() : '',
+      phone: phoneInput ? phoneInput.value : '',
+      car: carInput ? carInput.value.trim() : ''
     };
 
-    console.log('Lead:', data);
+    sendLead(data).then(() => showSuccess(form));
+  });
+}
 
-    form.innerHTML = `
-      <div style="text-align:center; padding: 40px 0;">
-        <svg width="64" height="64" viewBox="0 0 64 64" fill="none" style="margin-bottom:16px;">
-          <circle cx="32" cy="32" r="32" fill="rgba(255,107,0,0.15)"/>
-          <path d="M20 32l8 8 16-16" stroke="#ff6b00" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <h3 style="color:#fff; font-size:1.5rem; margin-bottom:8px;">Заявка отправлена!</h3>
-        <p style="color:#8a9bb0;">Мы свяжемся с вами в ближайшее время</p>
-      </div>
-    `;
+function initForms() {
+  document.querySelectorAll('form.veli-lead-form, #leadForm').forEach(bindLeadForm);
+
+  document.querySelectorAll('a[href*="t.me"]').forEach(link => {
+    link.addEventListener('click', () => {
+      if (typeof ym === 'function') ym(window.YM_ID, 'reachGoal', 'tg_click');
+    });
   });
 }
 
@@ -203,6 +208,41 @@ function initGalleries() {
       diff = 0;
     });
   });
+}
+
+/* ===== CALCULATOR ===== */
+function initCalculator() {
+  const budget = document.getElementById('budget');
+  if (!budget) return;
+
+  const rangeVal = document.getElementById('rangeVal');
+  const resultPrice = document.getElementById('resultPrice');
+  const resultSave = document.getElementById('resultSave');
+  const segBtns = document.querySelectorAll('#seg-country button');
+  let k = 0.78;
+
+  function fmt(n) { return Math.round(n / 10000) * 10000; }
+  function ruble(n) { return n.toLocaleString('ru-RU') + ' ₽'; }
+
+  function recalc() {
+    const b = +budget.value;
+    const our = fmt(b * k);
+    const save = b - our;
+    rangeVal.textContent = ruble(b);
+    resultPrice.textContent = '≈ ' + ruble(our);
+    resultSave.textContent = '≈ ' + ruble(save);
+  }
+
+  budget.addEventListener('input', recalc);
+  segBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      segBtns.forEach(x => x.classList.remove('active'));
+      btn.classList.add('active');
+      k = +btn.dataset.k;
+      recalc();
+    });
+  });
+  recalc();
 }
 
 /* ===== REVEAL ON SCROLL ===== */
