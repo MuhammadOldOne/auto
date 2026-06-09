@@ -1,8 +1,8 @@
 /* ===== VARIABLES ===== */
 :root {
-  --clr-bg: #0d2b22;
-  --clr-bg-light: #122c23;
-  --clr-bg-card: #183529;
+  --clr-bg: #091d17;
+  --clr-bg-light: #0e2620;
+  --clr-bg-card: #132e24;
   --clr-accent: #ff8533;
   --clr-accent-hover: #ff9a52;
   --clr-text: #e4e8ec;
@@ -135,7 +135,7 @@ ul, ol {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(13, 43, 34, 0.85);
+  background: rgba(9, 29, 23, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--clr-border);
@@ -218,7 +218,7 @@ ul, ol {
 /* ===== HERO ===== */
 .hero {
   padding: 140px 0 80px;
-  background: linear-gradient(160deg, #0d2b22 0%, #163b2c 50%, #0d2b22 100%);
+  background: linear-gradient(160deg, #091d17 0%, #122e24 50%, #091d17 100%);
   position: relative;
   overflow: hidden;
 }
@@ -305,7 +305,7 @@ ul, ol {
 
 /* ===== NEW HERO (veli-blocks) ===== */
 .veli-hero {
-  background: radial-gradient(circle at 80% 20%, #1a3b2d 0%, var(--clr-bg) 55%);
+  background: radial-gradient(circle at 80% 20%, #122e24 0%, var(--clr-bg) 55%);
   padding: 120px 20px 80px;
   position: relative;
   overflow: hidden;
@@ -810,7 +810,7 @@ ul, ol {
 /* ===== FORM SECTION ===== */
 .form-section {
   padding: 96px 0;
-  background: linear-gradient(160deg, #163b2c, #0d2b22);
+  background: linear-gradient(160deg, #122e24, #091d17);
 }
 
 .form-section__subtitle {
@@ -973,7 +973,7 @@ ul, ol {
     flex-direction: column;
     align-items: center;
     gap: 0;
-    background: rgba(13, 43, 34, 0.97);
+    background: rgba(9, 29, 23, 0.97);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--clr-border);
