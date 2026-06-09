@@ -1,10 +1,10 @@
 /* ===== VARIABLES ===== */
 :root {
-  --clr-bg: #0f1923;
-  --clr-bg-light: #162130;
-  --clr-bg-card: #1c2b3a;
-  --clr-accent: #ff6b00;
-  --clr-accent-hover: #ff8a33;
+  --clr-bg: #0d2b22;
+  --clr-bg-light: #122c23;
+  --clr-bg-card: #183529;
+  --clr-accent: #ff8533;
+  --clr-accent-hover: #ff9a52;
   --clr-text: #e4e8ec;
   --clr-text-muted: #8a9bb0;
   --clr-white: #ffffff;
@@ -135,7 +135,7 @@ ul, ol {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(15, 25, 35, 0.85);
+  background: rgba(13, 43, 34, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--clr-border);
@@ -150,21 +150,17 @@ ul, ol {
 }
 
 .header__logo {
-  font-size: 1.35rem;
-  font-weight: 800;
-  color: var(--clr-white);
-  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
 }
 
 .header__logo::before {
-  content: '';
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  background: var(--clr-accent);
-  border-radius: 50%;
-  margin-right: 6px;
-  vertical-align: middle;
+  display: none;
+}
+
+.header__logo-img {
+  height: 44px;
+  width: auto;
 }
 
 .header__nav {
@@ -236,7 +232,7 @@ ul, ol {
 /* ===== HERO ===== */
 .hero {
   padding: 140px 0 80px;
-  background: linear-gradient(160deg, #0f1923 0%, #1a2d42 50%, #0f1923 100%);
+  background: linear-gradient(160deg, #0d2b22 0%, #163b2c 50%, #0d2b22 100%);
   position: relative;
   overflow: hidden;
 }
@@ -323,7 +319,7 @@ ul, ol {
 
 /* ===== NEW HERO (veli-blocks) ===== */
 .veli-hero {
-  background: radial-gradient(circle at 80% 20%, #1b2a3e 0%, var(--clr-bg) 55%);
+  background: radial-gradient(circle at 80% 20%, #1a3b2d 0%, var(--clr-bg) 55%);
   padding: 120px 20px 80px;
   position: relative;
   overflow: hidden;
