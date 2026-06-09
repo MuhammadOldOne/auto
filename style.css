@@ -160,9 +160,9 @@ ul, ol {
 }
 
 .header__logo-img {
-  height: 44px;
+  height: 58px;
   width: auto;
-  max-width: 160px;
+  max-width: 220px;
 }
 
 .header__nav {
