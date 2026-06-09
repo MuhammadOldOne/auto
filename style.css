@@ -152,6 +152,7 @@ ul, ol {
 .header__logo {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .header__logo::before {
@@ -160,7 +161,8 @@ ul, ol {
 
 .header__logo-img {
   height: 44px;
-  width: auto;
+  width: 44px;
+  object-fit: contain;
 }
 
 .header__nav {
@@ -183,6 +185,7 @@ ul, ol {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-shrink: 0;
 }
 
 .header__tg {
@@ -211,7 +214,7 @@ ul, ol {
 
 .burger span {
   display: block;
-  height: 2px;
+  height: 3px;
   background: var(--clr-white);
   border-radius: 2px;
   transition: transform var(--transition), opacity var(--transition);
