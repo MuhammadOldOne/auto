@@ -354,6 +354,17 @@ ul, ol {
   font-size: 17px; color: var(--clr-text-muted); line-height: 1.6;
   margin-bottom: 26px; max-width: 520px;
 }
+.veli-founder-quote {
+  border-left: 3px solid var(--clr-accent);
+  padding: 12px 16px;
+  margin: 16px 0 4px;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--clr-text-muted);
+  line-height: 1.6;
+  background: rgba(255,107,0,.05);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
 .veli-trust { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 28px; }
 .veli-trust div { display: flex; flex-direction: column; }
 .veli-trust b { font-size: 24px; font-weight: 800; color: var(--clr-white); }
