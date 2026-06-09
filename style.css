@@ -161,8 +161,8 @@ ul, ol {
 
 .header__logo-img {
   height: 44px;
-  width: 44px;
-  object-fit: contain;
+  width: auto;
+  max-width: 160px;
 }
 
 .header__nav {
