@@ -146,7 +146,7 @@ ul, ol {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 90px;
+  height: 80px;
 }
 
 .header__logo {
