@@ -13,17 +13,21 @@ document.addEventListener('DOMContentLoaded', () => {
 function initBurger() {
   const burger = document.getElementById('burger');
   const nav = document.getElementById('nav');
+  const iconOpen = document.getElementById('burger-icon');
+  const iconClose = document.getElementById('burger-close');
   if (!burger || !nav) return;
 
   burger.addEventListener('click', () => {
-    burger.classList.toggle('active');
-    nav.classList.toggle('open');
+    const isOpen = nav.classList.toggle('open');
+    if (iconOpen) iconOpen.style.display = isOpen ? 'none' : 'block';
+    if (iconClose) iconClose.style.display = isOpen ? 'block' : 'none';
   });
 
   nav.querySelectorAll('.header__link').forEach(link => {
     link.addEventListener('click', () => {
-      burger.classList.remove('active');
       nav.classList.remove('open');
+      if (iconOpen) iconOpen.style.display = 'block';
+      if (iconClose) iconClose.style.display = 'none';
     });
   });
 }
