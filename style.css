@@ -386,9 +386,29 @@ ul, ol {
 .veli-note a { color: var(--clr-text-muted); text-decoration: underline; transition: color var(--transition); }
 .veli-note a:hover { color: var(--clr-white); }
 
+.veli-hero-img {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.veli-hero-img img {
+  max-width: 780px;
+  width: 100%;
+  filter: drop-shadow(0 20px 48px rgba(0, 0, 0, 0.55));
+  animation: heroImgFloat 4s ease-in-out infinite;
+}
+
+@keyframes heroImgFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
 @media (max-width: 860px) {
   .veli-hero { padding: 110px 20px 60px; }
   .veli-hero-wrap { grid-template-columns: 1fr; gap: 32px; }
+  .veli-hero-img img { max-width: 480px; }
 }
 
 /* ===== ADVANTAGES ===== */
