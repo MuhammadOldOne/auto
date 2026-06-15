@@ -447,7 +447,7 @@ ul, ol {
 .veli-sec-head { text-align: center; margin-bottom: 14px; }
 .veli-sec-head h2 { font-size: clamp(24px, 4vw, 36px); font-weight: 800; color: var(--clr-white); }
 .veli-sec-sub { text-align: center; color: var(--clr-text-muted); font-size: 16px; max-width: 640px; margin: 0 auto 44px; line-height: 1.55; }
-.veli-cmp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.veli-cmp-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 780px; margin: 0 auto; }
 .veli-cmp-card {
   background: var(--clr-bg-card); border: 1px solid var(--clr-border);
   border-radius: var(--radius); padding: 28px 24px; position: relative; overflow: hidden;
