@@ -742,72 +742,113 @@ ul, ol {
   .veli-seg { flex-direction: column; }
 }
 
-/* ===== VIDEO REVIEWS ===== */
-.veli-videos {
+/* ===== CAR SHOWCASE ===== */
+.veli-showcase {
   padding: 96px 0;
   background: var(--clr-bg);
 }
 
-.veli-videos__desc {
+.veli-showcase__sub {
   text-align: center;
   color: var(--clr-text-muted);
   font-size: 16px;
-  max-width: 720px;
+  max-width: 560px;
   margin: -24px auto 52px;
-  line-height: 1.75;
+  line-height: 1.6;
 }
 
-.veli-videos__grid {
+.veli-showcase__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
+  max-width: 860px;
+  margin: 0 auto;
 }
 
-.veli-video-card {
+.veli-showcase-card {
   background: var(--clr-bg-card);
   border: 1px solid var(--clr-border);
   border-radius: var(--radius);
   overflow: hidden;
-  transition: transform var(--transition), border-color var(--transition);
+  display: block;
+  text-decoration: none;
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
 
-.veli-video-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(255, 107, 0, 0.35);
+.veli-showcase-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(42, 171, 238, 0.5);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
 }
 
-.veli-video-wrap {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  background: #000;
+.veli-showcase-img-wrap {
+  position: relative;
   overflow: hidden;
+  aspect-ratio: 16 / 10;
 }
 
-.veli-video-el {
+.veli-showcase-img-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.4s ease;
 }
 
-.veli-video-label {
-  display: block;
-  padding: 16px 20px;
-  font-size: 15px;
+.veli-showcase-card:hover .veli-showcase-img-wrap img {
+  transform: scale(1.04);
+}
+
+.veli-showcase-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(42, 171, 238, 0.75);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.veli-showcase-card:hover .veli-showcase-overlay {
+  opacity: 1;
+}
+
+.veli-showcase-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+}
+
+.veli-showcase-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--clr-white);
+}
+
+.veli-showcase-link {
+  font-size: 14px;
   font-weight: 600;
-  color: var(--clr-text-muted);
+  color: var(--clr-tg);
   transition: color var(--transition);
 }
 
-.veli-video-card:hover .veli-video-label {
-  color: var(--clr-accent);
+.veli-showcase-card:hover .veli-showcase-link {
+  color: #3bbef5;
 }
 
 @media (max-width: 768px) {
-  .veli-videos__grid {
+  .veli-showcase__grid {
     grid-template-columns: 1fr;
+    max-width: 480px;
   }
-  .veli-videos__desc {
+  .veli-showcase__sub {
     margin-bottom: 36px;
   }
 }
