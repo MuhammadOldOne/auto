@@ -477,6 +477,150 @@ ul, ol {
   line-height: 1.5;
 }
 
+/* ===== WHY / COMFORT BLOCKS ===== */
+.veli-why {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.veli-why-block {
+  display: flex;
+  gap: 24px;
+  background: var(--clr-bg-card);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+  padding: 32px;
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+.veli-why-block:hover {
+  border-color: rgba(255, 107, 0, 0.3);
+  transform: translateY(-4px);
+}
+
+.veli-why-icon {
+  flex: 0 0 auto;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 107, 0, 0.1);
+  border-radius: 14px;
+  color: var(--clr-accent);
+}
+
+.veli-why-content h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--clr-white);
+  margin-bottom: 12px;
+}
+
+.veli-why-content p {
+  font-size: 0.98rem;
+  color: var(--clr-text-muted);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.veli-why-content p:last-child {
+  margin-bottom: 0;
+}
+
+.veli-why-content strong {
+  color: var(--clr-white);
+}
+
+.veli-why-lead {
+  color: var(--clr-accent) !important;
+  font-weight: 600;
+}
+
+.veli-why-cta {
+  display: inline-block;
+  margin-top: 4px;
+  color: var(--clr-accent);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.veli-why-cta:hover {
+  text-decoration: underline;
+}
+
+.veli-reports-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+  max-width: 520px;
+}
+
+.veli-report-card {
+  background: var(--clr-bg-light);
+  border: 1px solid var(--clr-border);
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  display: block;
+  transition: transform var(--transition), border-color var(--transition);
+}
+
+.veli-report-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(42, 171, 238, 0.5);
+}
+
+.veli-report-img {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.veli-report-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.veli-report-card:hover .veli-report-img img {
+  transform: scale(1.05);
+}
+
+.veli-report-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--clr-white);
+}
+
+.veli-report-name svg {
+  color: var(--clr-tg);
+  flex: 0 0 auto;
+}
+
+@media (max-width: 768px) {
+  .veli-why-block {
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+  }
+  .veli-reports-grid {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+  }
+}
+
 /* ===== COMPARE BLOCK (veli-blocks) ===== */
 .veli-compare { background: var(--clr-bg-light); padding: 80px 20px; }
 .veli-compare-wrap { max-width: var(--max-w); margin: 0 auto; }
