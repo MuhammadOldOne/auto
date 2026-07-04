@@ -825,6 +825,11 @@ ul, ol {
   margin-top: 48px;
 }
 
+.cases__cta {
+  text-align: center;
+  margin-top: 44px;
+}
+
 /* ===== CASES ===== */
 .cases {
   padding: 96px 0;
